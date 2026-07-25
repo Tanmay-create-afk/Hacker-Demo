@@ -1,0 +1,649 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tanmay Yawalkar - Software Development & AI Enthusiast</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+
+        :root {
+            /* Premium Dark Theme Colors */
+            --bg-color: #050505;
+            --panel-bg: rgba(20, 20, 25, 0.6);
+            --panel-border: rgba(255, 255, 255, 0.08);
+            --cyan-glow: #00f0ff;
+            --purple-glow: #8b5cf6;
+            --text-main: #f8fafc;
+            --text-muted: #94a3b8;
+            --accent-gradient: linear-gradient(135deg, var(--cyan-glow), var(--purple-glow));
+            --border-radius: 16px;
+            --font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+        }
+
+        /* --- Global Reset and Base --- */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            background-image:
+                radial-gradient(circle at 15% 50%, rgba(0, 240, 255, 0.04) 0%, transparent 50%),
+                radial-gradient(circle at 85% 30%, rgba(139, 92, 246, 0.04) 0%, transparent 50%);
+            color: var(--text-main);
+            font-family: var(--font-family);
+            line-height: 1.6;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 40px 20px;
+        }
+
+        /* --- Main Container --- */
+        .container {
+            width: 100%;
+            max-width: 1100px;
+            display: flex;
+            flex-direction: column;
+            gap: 24px;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* --- Panel Structure --- */
+        .panel {
+            background: var(--panel-bg);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid var(--panel-border);
+            border-radius: var(--border-radius);
+            padding: 32px;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s ease, border-color 0.3s ease;
+        }
+
+        .panel:hover {
+            border-color: rgba(255, 255, 255, 0.15);
+        }
+
+        /* Subtle top highlight for panels */
+        .panel::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+        }
+
+        h2 {
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: var(--text-muted);
+            margin-bottom: 24px;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        h2::before {
+            content: '';
+            display: inline-block;
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: var(--accent-gradient);
+            box-shadow: 0 0 10px var(--cyan-glow);
+        }
+
+        /* --- Header Panel Restructured --- */
+        .header-panel {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            gap: 20px;
+            padding: 40px;
+        }
+
+        .header-text {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .header-title {
+            color: var(--cyan-glow);
+            font-size: 0.95rem;
+            font-weight: 600;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        .header-name {
+            font-size: 2.5rem;
+            font-weight: 700;
+            letter-spacing: -0.5px;
+            line-height: 1.1;
+            margin-bottom: 8px;
+        }
+
+        .contact-info {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 12px;
+            font-size: 0.95rem;
+            margin-top: 4px;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            color: var(--text-muted);
+            transition: color 0.2s ease;
+        }
+
+        .contact-item a {
+            color: var(--text-muted);
+            text-decoration: none;
+            transition: color 0.2s ease;
+        }
+
+        .contact-item:hover,
+        .contact-item a:hover {
+            color: var(--text-main);
+        }
+
+        .contact-icon {
+            width: 18px;
+            height: 18px;
+            fill: var(--text-muted);
+            transition: fill 0.2s ease;
+        }
+
+        .contact-item:hover .contact-icon {
+            fill: var(--cyan-glow);
+        }
+
+        /* --- Main Grid Layout --- */
+        .main-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 24px;
+        }
+
+        .column {
+            display: flex;
+            flex-direction: column;
+            gap: 24px;
+        }
+
+        /* --- SKILLS Panel --- */
+        .skills-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+
+        .skill-tag {
+            padding: 8px 16px;
+            background: rgba(0, 240, 255, 0.05);
+            border: 1px solid rgba(0, 240, 255, 0.2);
+            border-radius: 30px;
+            color: var(--cyan-glow);
+            font-size: 0.9rem;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            cursor: default;
+        }
+
+        .skill-tag:hover {
+            background: rgba(0, 240, 255, 0.15);
+            border-color: rgba(0, 240, 255, 0.4);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0, 240, 255, 0.1);
+        }
+
+        /* --- INTERESTS Panel --- */
+        .interests-list {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+        }
+
+        .interest-item {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            color: var(--text-main);
+            font-size: 0.95rem;
+            font-weight: 500;
+        }
+
+        .interest-icon-container {
+            width: 40px;
+            height: 40px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border-radius: 10px;
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            fill: var(--purple-glow);
+        }
+
+        .interest-icon {
+            width: 20px;
+            height: 20px;
+        }
+
+        /* --- EDUCATION Panel --- */
+        .education-timeline {
+            position: relative;
+            padding-left: 24px;
+        }
+
+        .education-timeline::before {
+            content: '';
+            position: absolute;
+            left: 5px;
+            top: 5px;
+            bottom: 0;
+            width: 2px;
+            background: linear-gradient(to bottom, var(--purple-glow), transparent);
+            border-radius: 2px;
+            opacity: 0.5;
+        }
+
+        .education-entry {
+            position: relative;
+        }
+
+        .education-entry-marker {
+            position: absolute;
+            left: -24px;
+            top: 6px;
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background-color: var(--bg-color);
+            border: 2px solid var(--purple-glow);
+            box-shadow: 0 0 10px rgba(139, 92, 246, 0.5);
+        }
+
+        .education-year {
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: var(--cyan-glow);
+            margin-bottom: 4px;
+            letter-spacing: 0.5px;
+        }
+
+        .education-degree {
+            font-weight: 600;
+            font-size: 1.05rem;
+            color: var(--text-main);
+            margin-bottom: 4px;
+        }
+
+        .education-college {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+        }
+
+        /* --- PROJECTS Panel --- */
+        .project-card {
+            background: rgba(0, 0, 0, 0.2);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: 12px;
+            padding: 20px;
+            transition: border-color 0.3s ease;
+        }
+
+        .project-card:hover {
+            border-color: rgba(255, 255, 255, 0.15);
+        }
+
+        .project-title {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--text-main);
+            margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .project-desc {
+            font-size: 0.95rem;
+            color: var(--text-muted);
+            margin-bottom: 16px;
+        }
+
+        .project-tech {
+            display: flex;
+            gap: 8px;
+            font-size: 0.8rem;
+            color: var(--cyan-glow);
+            font-weight: 500;
+        }
+
+        /* --- LANGUAGES Panel --- */
+        .languages-list {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+
+        .language-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            padding-bottom: 12px;
+        }
+
+        .language-item:last-child {
+            border-bottom: none;
+            padding-bottom: 0;
+        }
+
+        .language-name {
+            font-weight: 500;
+            color: var(--text-main);
+        }
+
+        .language-level {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            background: rgba(255, 255, 255, 0.05);
+            padding: 4px 10px;
+            border-radius: 6px;
+        }
+
+        /* Download PDF Button */
+        .download-btn {
+            background: var(--accent-gradient);
+            border: none;
+            border-radius: 8px;
+            color: #fff;
+            font-size: 0.9rem;
+            font-weight: 600;
+            padding: 10px 20px;
+            cursor: pointer;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+            box-shadow: 0 4px 15px rgba(0, 240, 255, 0.2);
+            font-family: inherit;
+            margin-bottom: 10px;
+        }
+
+        .download-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(139, 92, 246, 0.4);
+        }
+
+        /* --- SVG Definitions --- */
+        #svg-definitions {
+            display: none;
+        }
+
+        /* --- Media Queries --- */
+        @media (max-width: 900px) {
+            .main-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .interests-list {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Hidden SVG Definitions -->
+    <svg id="svg-definitions" xmlns="http://www.w3.org/2000/svg">
+        <symbol id="icon-email" viewBox="0 0 24 24">
+            <path
+                d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z" />
+        </symbol>
+        <symbol id="icon-phone" viewBox="0 0 24 24">
+            <path
+                d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.26 1.12.32 2.33.5 3.57.5.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.19 2.45.5 3.57.11.35.03.74-.25 1.02l-2.2 2.2z" />
+        </symbol>
+        <symbol id="icon-location" viewBox="0 0 24 24">
+            <path
+                d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-3-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5S10.62 6.5 12 6.5s2.5 1.12 2.5 2.5S13.38 11.5 12 11.5z" />
+        </symbol>
+        <symbol id="icon-github" viewBox="0 0 24 24">
+            <path
+                d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.374-12-12-12z" />
+        </symbol>
+        <symbol id="icon-linkedin" viewBox="0 0 24 24">
+            <path
+                d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.16-3.8c-1.08 0-1.8.57-2.14 1.14v-1h-2.56v9h2.64v-5.01c0-1.25.93-2.19 2.06-2.19s2.05.94 2.05 2.19v5.01h2.61V18.5zM6.88 8.56a1.56 1.56 0 1 0 0-3.12 1.56 1.56 0 0 0 0 3.12zm1.32 9.94V9.5H5.56v9h2.64z" />
+        </symbol>
+        <symbol id="icon-code" viewBox="0 0 24 24">
+            <path
+                d="M14.6 16.6l4.6-4.6-4.6-4.6 1.4-1.4 6 6-6 6-1.4-1.4zM9.4 16.6l-4.6-4.6 4.6-4.6-1.4-1.4-6 6 6 6 1.4-1.4z" />
+        </symbol>
+        <symbol id="icon-web" viewBox="0 0 24 24">
+            <path
+                d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z" />
+        </symbol>
+        <symbol id="icon-mobile" viewBox="0 0 24 24">
+            <path d="M17 1H7c-1.1 0-2 .9-2 2v18c0 1.1.9 2 2 2h10c1.1 0 2-.9 2-2V3c0-1.1-.9-2-2-2zm0 18H7V5h10v14z" />
+        </symbol>
+        <symbol id="icon-ai" viewBox="0 0 24 24">
+            <path
+                d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8-8-3.59 8-8 8z" />
+            <circle cx="12" cy="12" r="3" />
+            <path
+                d="M12 6.5C8.96 6.5 6.5 8.96 6.5 12s2.46 5.5 5.5 5.5 5.5-2.46 5.5-5.5-2.46-5.5-5.5-5.5zm0 9.5c-2.21 0-4-1.79-4-4s1.79-4 4-4 4 1.79 4 4-1.79 4-4 4z" />
+        </symbol>
+    </svg>
+
+    <div class="container">
+
+        <!-- Header Panel -->
+        <header class="panel header-panel">
+
+            <button class="download-btn">Download PDF</button>
+
+            <div class="header-text">
+                <p class="header-title">SOFTWARE DEVELOPMENT & AI ENTHUSIAST</p>
+                <h1 class="header-name">Tanmay Yawalkar</h1>
+            </div>
+
+            <div class="contact-info">
+                <!-- 1. Phone -->
+                <div class="contact-item">
+                    <svg class="contact-icon">
+                        <use xlink:href="#icon-phone"></use>
+                    </svg>
+                    <span>+91 9021657553</span>
+                </div>
+                <!-- 2. Location -->
+                <div class="contact-item">
+                    <svg class="contact-icon">
+                        <use xlink:href="#icon-location"></use>
+                    </svg>
+                    <span>Nagpur, Maharashtra, India</span>
+                </div>
+                <!-- 3. Email -->
+                <div class="contact-item">
+                    <svg class="contact-icon">
+                        <use xlink:href="#icon-email"></use>
+                    </svg>
+                    <a href="mailto:tanmayyawalkar3@gmail.com">tanmayyawalkar3@gmail.com</a>
+                </div>
+                <!-- 4. GitHub (Moved up) -->
+                <div class="contact-item">
+                    <svg class="contact-icon">
+                        <use xlink:href="#icon-github"></use>
+                    </svg>
+                    <a href="https://github.com/Tanmay-create-afk"
+                        target="_blank">https://github.com/Tanmay-create-afk</a>
+                </div>
+                <!-- 5. LinkedIn (Moved down) -->
+                <div class="contact-item">
+                    <svg class="contact-icon">
+                        <use xlink:href="#icon-linkedin"></use>
+                    </svg>
+                    <a href="https://www.linkedin.com/in/tanmay-yawalkar-b20512394/"
+                        target="_blank">linkedin.com/in/tanmay-yawalkar-b20512394</a>
+                </div>
+            </div>
+        </header>
+
+        <!-- Main Grid -->
+        <div class="main-grid">
+
+            <!-- Left Column -->
+            <div class="column">
+
+                <!-- SKILLS Panel -->
+                <section class="panel">
+                    <h2>Skills & Technologies</h2>
+                    <div class="skills-grid">
+                        <div class="skill-tag">Python</div>
+                        <div class="skill-tag">JavaScript</div>
+                        <div class="skill-tag">C++</div>
+                        <div class="skill-tag">Java</div>
+                        <div class="skill-tag">HTML / CSS</div>
+                        <div class="skill-tag">React</div>
+                        <div class="skill-tag">Node.js</div>
+                        <div class="skill-tag">Git / GitHub</div>
+                    </div>
+                </section>
+
+                <!-- INTERESTS Panel -->
+                <section class="panel">
+                    <h2>Areas of Interest</h2>
+                    <div class="interests-list">
+                        <div class="interest-item">
+                            <div class="interest-icon-container">
+                                <svg class="interest-icon">
+                                    <use xlink:href="#icon-code"></use>
+                                </svg>
+                            </div>
+                            <span>Software Dev</span>
+                        </div>
+                        <div class="interest-item">
+                            <div class="interest-icon-container">
+                                <svg class="interest-icon">
+                                    <use xlink:href="#icon-web"></use>
+                                </svg>
+                            </div>
+                            <span>Full Stack Dev</span>
+                        </div>
+                        <div class="interest-item">
+                            <div class="interest-icon-container">
+                                <svg class="interest-icon">
+                                    <use xlink:href="#icon-mobile"></use>
+                                </svg>
+                            </div>
+                            <span>App Dev (Android/iOS)</span>
+                        </div>
+                        <div class="interest-item">
+                            <div class="interest-icon-container">
+                                <svg class="interest-icon">
+                                    <use xlink:href="#icon-ai"></use>
+                                </svg>
+                            </div>
+                            <span>Artificial Intelligence</span>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- LANGUAGES Panel -->
+                <section class="panel">
+                    <h2>Languages</h2>
+                    <div class="languages-list">
+                        <div class="language-item">
+                            <span class="language-name">Hindi</span>
+                            <span class="language-level">Native</span>
+                        </div>
+                        <div class="language-item">
+                            <span class="language-name">English</span>
+                            <span class="language-level">Professional Working</span>
+                        </div>
+                    </div>
+                </section>
+
+            </div> <!-- End Left Column -->
+
+            <!-- Right Column -->
+            <div class="column">
+
+                <!-- EDUCATION Panel -->
+                <section class="panel">
+                    <h2>Education</h2>
+                    <div class="education-timeline">
+                        <div class="education-entry">
+                            <div class="education-entry-marker"></div>
+                            <p class="education-year">Expected Graduation - 2027</p>
+                            <p class="education-degree">Bachelor of Computer Applications (BCA)</p>
+                            <p class="education-college">Shri Shivaji Education Society Amravati College, Nagpur,
+                                Maharashtra</p>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- PROJECTS Panel -->
+                <section class="panel">
+                    <h2>Featured Projects</h2>
+
+                    <div class="project-card">
+                        <div class="project-title">
+                            CodeCrash Arena
+                        </div>
+                        <p class="project-desc">
+                            A highly interactive web application platform built from the ground up. Features an
+                            intuitive user interface and responsive design optimized for a seamless user experience.
+                        </p>
+                        <div class="project-tech">
+                            <span>HTML5</span> • <span>CSS3</span> • <span>JavaScript</span>
+                        </div>
+                    </div>
+
+                    <div style="height: 16px;"></div> <!-- Spacer -->
+
+                    <div class="project-card">
+                        <div class="project-title">
+                            Personal Portfolio V2
+                        </div>
+                        <p class="project-desc">
+                            A fully responsive, dark-mode themed developer portfolio highlighting skills, academic
+                            background, and personal projects using modern CSS architecture and glassmorphism.
+                        </p>
+                        <div class="project-tech">
+                            <span>UI/UX Design</span> • <span>CSS Grid</span> • <span>Flexbox</span>
+                        </div>
+                    </div>
+
+                </section>
+
+            </div> <!-- End Right Column -->
+
+        </div> <!-- End Main Grid -->
+
+    </div> <!-- End Container -->
+
+</body>
+
+</html>
